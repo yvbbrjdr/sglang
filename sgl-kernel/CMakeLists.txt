@@ -46,7 +46,7 @@ include(FetchContent)
 FetchContent_Declare(
     repo-cutlass
     GIT_REPOSITORY https://github.com/NVIDIA/cutlass
-    GIT_TAG        57e3cfb47a2d9e0d46eb6335c3dc411498efa198
+    GIT_TAG        f3fde58372d33e9a5650ba7b80fc48b3b49d40c8
     GIT_SHALLOW    OFF
 )
 FetchContent_Populate(repo-cutlass)
@@ -55,7 +55,7 @@ FetchContent_Populate(repo-cutlass)
 FetchContent_Declare(
     repo-deepgemm
     GIT_REPOSITORY https://github.com/sgl-project/DeepGEMM
-    GIT_TAG        sgl
+    GIT_TAG        012e5aac28739a100909cfbf6e49f549605ba9d8
     GIT_SHALLOW    OFF
 )
 FetchContent_Populate(repo-deepgemm)
@@ -72,7 +72,7 @@ FetchContent_Populate(repo-fmt)
 FetchContent_Declare(
     repo-triton
     GIT_REPOSITORY "https://github.com/triton-lang/triton"
-    GIT_TAG        8f9f695ea8fde23a0c7c88e4ab256634ca27789f
+    GIT_TAG        c733bf7ed360cd99b0b40a2f513c1adbb96cbc1f
     GIT_SHALLOW    OFF
 )
 FetchContent_Populate(repo-triton)
@@ -99,7 +99,7 @@ FetchContent_Populate(repo-flash-attention)
 FetchContent_Declare(
     repo-flash-attention-origin
     GIT_REPOSITORY https://github.com/Dao-AILab/flash-attention.git
-    GIT_TAG        203b9b3dba39d5d08dffb49c09aa622984dff07d
+    GIT_TAG        5c1627a7a1cda9c32cb9b937a053564e663f81bc
     GIT_SHALLOW    OFF
 )
 FetchContent_Populate(repo-flash-attention-origin)
@@ -241,7 +241,7 @@ if ("${CUDA_VERSION}" VERSION_GREATER_EQUAL "12.8" OR SGL_KERNEL_ENABLE_SM100A)
     endif()
 endif()
 
-if ("${CUDA_VERSION}" VERSION_GREATER_EQUAL "12.4")
+if ("${CUDA_VERSION}" VERSION_GREATER_EQUAL "12.4" AND "${CUDA_VERSION}" VERSION_LESS "13.0")
     set(SGL_KERNEL_ENABLE_FA3 ON)
     list(APPEND SGL_KERNEL_CUDA_FLAGS
         "-gencode=arch=compute_90a,code=sm_90a"
