@@ -4,7 +4,7 @@ ENV TRITON_PTXAS_PATH=/usr/local/cuda/bin/ptxas
 
 RUN apt update \
   && apt install -y python3.12-full python3.12-dev python3-pip git wget libnuma-dev libibverbs-dev \
-  && pip3 install --break-system-packages uv scikit-build-core \
+  && pip3 install --break-system-packages uv scikit-build-core accelerate \
   && pip3 install --break-system-packages --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130 \
   && wget https://cmake.org/files/v3.31/cmake-3.31.1-linux-aarch64.tar.gz \
   && tar -xzf cmake-3.31.1-linux-aarch64.tar.gz \
